@@ -12,7 +12,6 @@ const Square = (props) => {
 
   return <button onClick={() => {props.onClickCallback(props.id)}} className="square">
     {props.value}
-    {props.id}
   </button>
 }
 
