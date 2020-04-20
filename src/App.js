@@ -89,6 +89,8 @@ const App = () => {
         winner = squares[row][2].value;
         //update squares = set and refresh page and checking for winner
         setCurrentWinner(winner)
+        //stop evaluating other combinations, return winner
+        return winner 
       }
     }
     //check column winners
@@ -99,7 +101,7 @@ const App = () => {
           winner = squares[0][col].value;
           //update squares to set and refresh page to check for winner
           setCurrentWinner(winner)
-
+          return winner
         }
     }
     //check diagonal winner
@@ -108,12 +110,19 @@ const App = () => {
       && squares[0][0].value !== ''){
       winner = squares[0][0].value;
       setCurrentWinner(winner)
+      return winner
     }
     else if (squares[2][0].value === squares[1][1].value 
       && squares[0][2].value === squares[2][0].value 
       && squares[2][0].value !== ''){
       winner = squares[2][0].value;
       setCurrentWinner(winner)
+      return winner
+    }
+    //check ties
+    //if all squares are filled, there are no winners
+    if (isSquaresFilled() && winner === null) {
+      setCurrentWinner('no winner, tied')
     }
     return winner
   }
@@ -124,15 +133,14 @@ const App = () => {
     //turn squares array from 2d to 1d:https://stackoverflow.com/questions/14824283/convert-a-2d-javascript-array-to-a-1d-array
     let squaresflat = [].concat(...squares);
     //loop through squares 
-    squaresflat.forEach((item, index) => {
-      //console.log(item) //{id, value}
-      //console.log(index) //index
-      //check if value is not ''
-      if (item.value === ''){
+    for (let i in squaresflat) {
+      let square = squaresflat[i];
+       //check if value is ''
+       if (square.value === ''){
         //if true, there is a value
         return false;
       }
-    })
+    }
     return isFilled
   }
 
