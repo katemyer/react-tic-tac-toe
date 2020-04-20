@@ -30,6 +30,7 @@ const App = () => {
   //https://github.com/Ada-Developers-Academy/textbook-curriculum/blob/master/React/events.md
   const [squares, setSquares] = useState(generateSquares());
   const [currentPlayer, setCurrentPlayer] = useState(PLAYER_1);
+  
   // Wave 2
   // You will need to create a method to change the square 
   //   When it is clicked on.
@@ -74,8 +75,12 @@ const App = () => {
 
   }
 
-  const resetGame = () => {
-    // Complete in Wave 4
+  const onClickResetGame = () => {
+    // Complete in Wave 4: resetting all states
+    // reset setSquares to default generateSquares());
+    setSquares(generateSquares())
+    //reset setcurrentPlayer to default PLAYER_1
+    setCurrentPlayer(PLAYER_1)
   }
 
   return (
@@ -83,8 +88,8 @@ const App = () => {
       <header className="App-header">
         <h1>React Tic Tac Toe</h1>
         <h2>The winner is ... -- Fill in for wave 3 </h2>
-        <h3> {currentPlayer} </h3>
-        <button>Reset Game</button>
+        <h3> current player {currentPlayer} </h3>
+        <button onClick={onClickResetGame}>Reset Game</button>
       </header>
       <main>
         <Board squares={squares} onClickCallback={onClickCallback} />
