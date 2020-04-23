@@ -1,5 +1,5 @@
 # React Tic Tac Toe
-
+deployed: https://katemyer.github.io/react-tic-tac-toe/
 ## At A Glance
 
 - Individual [Stage 2 project](https://github.com/Ada-Developers-Academy/pedagogy/blob/master/classroom/rule-of-three.md#stage-2)
